@@ -1,0 +1,49 @@
+{
+  "info": {
+    "name": "Cliente API Collection",
+    "_postman_id": "b1234567-1234-1234-1234-abcdef123456",
+    "description": "Colección para probar los endpoints POST y GET de /clientes",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Crear Cliente",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Ana Gómez\",\n  \"email\": \"ana@example.com\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8181/clientes",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8181",
+          "path": ["clientes"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Listar Clientes",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8181/clientes",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8181",
+          "path": ["clientes"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
