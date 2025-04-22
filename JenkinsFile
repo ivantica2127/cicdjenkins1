@@ -1,0 +1,48 @@
+pipeline {
+    agent any
+
+    tools {
+        maven 'Maven 3.8.6'  // Asegúrate de tenerlo configurado en Jenkins
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/ivantica2127/cicdjenkins1.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'mvn clean install'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+
+        stage('Package') {
+            steps {
+                sh 'mvn package'
+            }
+        }
+
+        stage('Archive') {
+            steps {
+                archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Build completado exitosamente.'
+        }
+        failure {
+            echo 'Falló el pipeline.'
+        }
+    }
+}
