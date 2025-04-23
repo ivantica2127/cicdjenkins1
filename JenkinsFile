@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven 3.8.6'  // Asegúrate de tenerlo configurado en Jenkins
+        maven 'Maven Apache'  // Asegúrate de tenerlo configurado en Jenkins
     }
 
     stages {
