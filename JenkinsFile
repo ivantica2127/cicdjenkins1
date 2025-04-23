@@ -2,25 +2,13 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven Apache'  // Asegúrate de que este nombre está bien configurado en Jenkins
+        maven 'Maven Apache'  // Asegúrate de que esté configurado así en Jenkins -> Global Tools
     }
 
     stages {
-        stage('Build') {
+        stage('Build & Test') {
             steps {
-                sh 'mvn clean install'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                sh 'mvn test'
-            }
-        }
-
-        stage('Package') {
-            steps {
-                sh 'mvn package'
+                sh 'mvn clean verify -Dspring.profiles.active=test'
             }
         }
 
@@ -33,10 +21,10 @@ pipeline {
 
     post {
         success {
-            echo 'Build completado exitosamente.'
+            echo ' Build y pruebas completadas correctamente.'
         }
         failure {
-            echo 'Falló el pipeline.'
+            echo ' Fallo el pipeline.'
         }
     }
 }
