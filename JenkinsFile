@@ -2,16 +2,10 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven Apache'  // Asegúrate de tenerlo configurado en Jenkins
+        maven 'Maven Apache'  // Asegúrate de que este nombre está bien configurado en Jenkins
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/ivantica2127/cicdjenkins1.git'
-            }
-        }
-
         stage('Build') {
             steps {
                 sh 'mvn clean install'
